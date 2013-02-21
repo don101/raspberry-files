@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Title files.html{% endblock %}
+
+{% block content %}
+
+
+
+<div id="filesTableDiv">
+<table id="filesTable">
+{% for file in files%}
+<tr><td>
+{{file}}
+</td></tr>
+{%endfor%}
+</table>
+</div>
+
+hopefully these changes will show up( just after a git reset)
+
+
+{% endblock %}
