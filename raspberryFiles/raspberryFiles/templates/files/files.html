@@ -1,21 +1,27 @@
 {% extends "base.html" %}
 
 {% block title %}Title files.html{% endblock %}
-
+{% block page %}Files{% endblock %}
 {% block content %}
 
 
 
 <div id="filesTableDiv">
+	Contents of Shared
 <table id="filesTable">
 {% for file in files%}
 <tr><td>
+	
 {{file}}
 </td></tr>
 {%endfor%}
+
+
+
 </table>
 </div>
 
+{{cover}}
 
 
 {% endblock %}
