@@ -17,6 +17,11 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^$', home),
-    url(r'^files', files),
+    url(r'^files/$', files), 
+    url(r'^files/(?P<directory>[\w\W]+)+', files_subdirectory), 
     url(r'^settings', settings),
+    url(r'^list/$', 'list', name='list'),
+    url(r'^test/$', test_root),
+    url(r'^test/(?P<directory>[\w\W]+)+', test)   
+   # url(r'^upload', upload_file),
     )
