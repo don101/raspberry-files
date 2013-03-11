@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Upload{% endblock %}
+{% block page %}Upload{% endblock %}
+{% block content %}
+
+<table id="filesTable">
+{% for file in files%}
+<tr><td>
+	
+{{file}}
+</td></tr>
+{%endfor%}
+
+
+
+</table>
+<br>
+{{form.as_table}}
+<br>
+ <input type="submit" value="Submit">
+
+{% endblock%}

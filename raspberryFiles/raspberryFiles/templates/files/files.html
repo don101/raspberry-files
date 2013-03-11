@@ -6,22 +6,78 @@
 
 
 
+<a href="/files/">Base Directory</a>
+{% if not validDirectory %}
+<br>
+
+<font color = "red"><b>Directory is invalid!</b></font>
+
+{% endif %}
+
 <div id="filesTableDiv">
-	Contents of Shared
-<table id="filesTable">
-{% for file in files%}
-<tr><td>
+	<b>Showing contents of:</b> {{currentDir}}
+
 	
-{{file}}
-</td></tr>
-{%endfor%}
+	<table id="filesTable">
+		<thead>
+			<tr>
+				<th>
+					File
+				</th>
+				<th>
+					Type
+				</th>
+				<th>
+					Date Modified
+				</th>
+			</tr>
+		</thead>
 
+		<tbody>	
+			{% for file, fileName, fileExt in entriesFiles %}
+			<tr><td>
 
+				<a href='/media/{{currentURL}}/{{file}}'>{{fileName}}</a>
+
+			</td>
+			<td>
+				{{fileExt}}
+
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		{%endfor%}
+
+		{% for folder in entriesFolders %}
+			<tr><td>
+
+				<a href='/files/{{currentURL}}{{folder}}/'>{{folder}}</a>
+
+			</td>
+			<td>
+				
+				Folder
+
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		{%endfor%}
+	</tbody>
 
 </table>
 </div>
 
-{{cover}}
+<br><br><br>
+
+currentDir: {{currentDir}} <br>
+entries: {{entries}} <br>
+entriesFiles: {{entriesFiles}} <br>
+entriesFolders: {{entriesFolders}} <br>
+isSubdirectory: {{isSubdirectory}}<br>
 
 
 {% endblock %}
