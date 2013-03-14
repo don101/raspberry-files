@@ -144,6 +144,10 @@ body{
      right:0;
 }
 
+#filesTable a{
+    color: black;
+    text-decoration:none;
+}
 
 
 

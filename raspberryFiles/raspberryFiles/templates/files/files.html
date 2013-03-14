@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Title files.html{% endblock %}
+{% block title %}Files{% endblock %}
 {% block page %}Files{% endblock %}
 {% block content %}
 
 
 
-<a href="/files/">Base Directory</a>
+
 {% if not validDirectory %}
 <br>
 
@@ -16,8 +16,11 @@
 
 <div id="filesTableDiv">
 	<b>Showing contents of:</b> {{currentDir}}
+	<br>
+	<button id = 'baseDirectoryButton'>Base Directory</button>
+	<button id = 'upButton'>Up</button>
+	<br>
 
-	
 	<table id="filesTable">
 		<thead>
 			<tr>
@@ -28,56 +31,61 @@
 					Type
 				</th>
 				<th>
-					Date Modified
+					Last Modified
 				</th>
 			</tr>
 		</thead>
 
 		<tbody>	
-			{% for file, fileName, fileExt in entriesFiles %}
+			{% for entry, entryName, entryType, isFolder, timeModified in entriesList %}
+
 			<tr><td>
 
-				<a href='/media/{{currentURL}}/{{file}}'>{{fileName}}</a>
-
-			</td>
-			<td>
-				{{fileExt}}
-
-			</td>
-			<td>
+				<a href='
 				
+
+
+
+				{% if isFolder %}
+
+				/files/
+
+
+				{% else %}
+
+				/media/
+				
+				{%endif%}
+
+
+
+
+
+				{{currentURL}}{{entry}}'>{{entryName}}</a>
+
+			</td>
+			<td>
+				{{entryType}}
+
+			</td>
+			<td>
+				{{timeModified}}
 			</td>
 		</tr>
 		{%endfor%}
 
-		{% for folder in entriesFolders %}
-			<tr><td>
-
-				<a href='/files/{{currentURL}}{{folder}}/'>{{folder}}</a>
-
-			</td>
-			<td>
-				
-				Folder
-
-			</td>
-			<td>
-				
-			</td>
-		</tr>
-		{%endfor%}
 	</tbody>
 
 </table>
 </div>
 
 <br><br><br>
-
+<!--
 currentDir: {{currentDir}} <br>
 entries: {{entries}} <br>
 entriesFiles: {{entriesFiles}} <br>
 entriesFolders: {{entriesFolders}} <br>
 isSubdirectory: {{isSubdirectory}}<br>
-
+-->
 
 {% endblock %}
