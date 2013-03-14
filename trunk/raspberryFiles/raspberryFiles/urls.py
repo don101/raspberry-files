@@ -20,8 +20,7 @@ urlpatterns = patterns('',
     url(r'^files/$', files), 
     url(r'^files/(?P<directory>[\w\W]+)+', files_subdirectory), 
     url(r'^settings', settings),
-    url(r'^list/$', 'list', name='list'),
     url(r'^test/$', test_root),
-    url(r'^test/(?P<directory>[\w\W]+)+', test)   
-   # url(r'^upload', upload_file),
+    url(r'^test/(?P<path>[\w\W]+)+', test),
+
     )
