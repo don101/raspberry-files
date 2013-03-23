@@ -7,6 +7,7 @@
 
 
 
+
 {% if not validDirectory %}
 <br>
 
@@ -14,78 +15,132 @@
 
 {% endif %}
 
-<div id="filesTableDiv">
+
+
+<div id="filesDiv">
 	<b>Showing contents of:</b> {{currentDir}}
 	<br>
+
+	<div id = 'buttonsDiv'>
+	{%if buttonsEnabled%}
+	
 	<button id = 'baseDirectoryButton'>Base Directory</button>
 	<button id = 'upButton'>Up</button>
-	<br>
 
-	<table id="filesTable">
-		<thead>
-			<tr>
-				<th>
-					File
-				</th>
-				<th>
-					Type
-				</th>
-				<th>
-					Last Modified
-				</th>
+	{%else%}
+
+	<button id = 'baseDirectoryButton' disabled>Base Directory</button>
+	<button id = 'upButton' disabled>Up</button>
+
+	{%endif%}
+
+	<button id = 'addFilesButton'>Add Files</button>
+	</div>
+
+
+
+	<div id='uploadDownload'>
+		<div id = 'uploadDownloadDownload'>
+			<h2>Add URL for download here!</h2>
+			<form action="/download/" method="post">{% csrf_token %}
+				<input type="text" name="downloadURL"><br>
+				<input type="submit" value="Download">
+			</form>
+
+		</div>
+		<div id = 'uploadDownloadUpload'>
+			<h2>Select file for upload here!</h2>
+			<form action="/upload/" method="post" enctype="multipart/form-data">{% csrf_token %}
+				<input type="file" name="fileUpload"><br>
+				<input type="submit" value="Upload">
+			</form>
+		</div>
+
+	</div>
+
+	<div id = "filesTableDiv">
+		<table id="filesTable" class="filesTable">
+
+			<thead>
+				<tr>
+					<th style="width: 500px;">
+						File
+					</th>
+					<th style="width: 100px;">
+						Type
+					</th>
+					<th style="width: 100px;">
+						Size
+					</th>
+					<th style="width: 170px;">
+						Date
+					</th>
+					<th> Delete</th>
+				</tr>
+			</thead>
+
+			<tbody>	
+				{% for entry, entryName, entryType, isFolder, entrySize, timeModified in entriesList %}
+
+				<tr><td>
+
+					<a href='	
+
+					{% if isFolder %}
+
+					/files/
+
+					{% else %}
+
+					/media/
+
+					{%endif%}
+
+
+
+
+
+					{{currentURL}}{{entry}}
+
+					{% if isFolder%}
+					/
+					{%endif%}
+
+					'>
+					{% if isFolder%}
+					<b>{{entryName}}/ </b>
+					{% else%}
+					{{entryName}}
+					{%endif%}</a>
+
+				</td>
+				<td class = 'typeTD'>
+					{% if isFolder%}
+					<b>{{entryType}}</b>
+					{% else%}
+					{{entryType}}
+					{%endif%}
+				</td>
+
+				<td>
+					{{entrySize}}
+				</td>
+				<td>
+					{{timeModified}}
+				</td>
+				<td>
+					<a href = '/delete/{{currentURL}}{{entry}}'> <img src="/static/img/delete.png" width="20" height="20"> </a>
+				</td>
 			</tr>
-		</thead>
+			{%endfor%}
 
-		<tbody>	
-			{% for entry, entryName, entryType, isFolder, timeModified in entriesList %}
+		</tbody>
 
-			<tr><td>
-
-				<a href='
-				
-
-
-
-				{% if isFolder %}
-
-				/files/
-
-
-				{% else %}
-
-				/media/
-				
-				{%endif%}
-
-
-
-
-
-				{{currentURL}}{{entry}}'>{{entryName}}</a>
-
-			</td>
-			<td>
-				{{entryType}}
-
-			</td>
-			<td>
-				{{timeModified}}
-			</td>
-		</tr>
-		{%endfor%}
-
-	</tbody>
-
-</table>
+	</table>
+</div>
 </div>
 
 <br><br><br>
-<!--
-currentDir: {{currentDir}} <br>
-entries: {{entries}} <br>
-entriesFiles: {{entriesFiles}} <br>
-entriesFolders: {{entriesFolders}} <br>
-isSubdirectory: {{isSubdirectory}}<br>
--->
+
 
 {% endblock %}

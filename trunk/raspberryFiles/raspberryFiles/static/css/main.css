@@ -104,7 +104,7 @@ body{
 #footer,
 #content{
 
-    width: 900px ;
+    width: 950px ;
     margin-left: auto ;
     margin-right: auto ;
 
@@ -144,12 +144,77 @@ body{
      right:0;
 }
 
-#filesTable a{
-    color: black;
-    text-decoration:none;
+
+
+ #uploadDownload{
+    height:147px;
+    position:relative;
+    background-color: #fcf1e7;
+    margin-bottom: 19px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left:2px solid #A9F5A9;
+    border-right:2px solid #A9F5A9;
+    border-top:2px solid #A9F5A9;
+    border-bottom:2px solid #A9F5A9;
+
 }
 
+#uploadDownloadDownload{
+    position:absolute;
 
+    left:0px;
+
+    top:0px;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left:2px solid #A9F5A9;
+    border-right:2px solid #A9F5A9;
+    border-top:2px solid #A9F5A9;
+    border-bottom:2px solid #A9F5A9;
+    padding: 10px;    
+}
+
+#uploadDownloadUpload{
+ position:absolute;
+
+    right:0px;
+
+    top:0px;
+
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left:2px solid #A9F5A9;
+    border-right:2px solid #A9F5A9;
+    border-top:2px solid #A9F5A9;
+    border-bottom:2px solid #A9F5A9;
+    padding: 10px;
+}
+
+#buttonsDiv{
+    padding-bottom: 2px;
+}
+/* ==========================================================================
+   DataTables
+   ========================================================================== */
+
+
+#filesTable {
+    width: 950px;
+}
+
+#filesTable tbody tr td a{
+    color: #000000;
+    text-decoration: none;
+}
 
 
 
