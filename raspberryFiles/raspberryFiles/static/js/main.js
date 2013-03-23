@@ -1,13 +1,17 @@
 
 $(document).ready(function() {
-	var oTable = $('#filesTable').dataTable( {
+	var oTable = $('#filesTable').dataTable({
 		"bJQueryUI": true,
-		"aaSorting": [[ 1, "desc" ]]
+		"bPaginate": false,
+		"bLengthChange": false,
+		"bInfo": false
 	}
+
 	);
 
-	$('#filesTable').css('background-color','black');
 
+
+	$('#uploadDownload').hide();
 	
 
 	$('#banner').click(function() {
@@ -19,9 +23,17 @@ $(document).ready(function() {
 		window.location = "/files/";
 	});
 
-    $('#upButton').click(function(){
-		parent.history.back();
-	});    
+	$('#upButton').click(function(){
+    	//alert(document.location.href);
+    	document.location.href = '..'; 
+    });  
+
+
+	$("#addFilesButton").click(function () {
+		$("#uploadDownload").slideToggle();
+	});  
+
+
 
 } );
 
