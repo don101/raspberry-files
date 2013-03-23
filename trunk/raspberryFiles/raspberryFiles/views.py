@@ -166,18 +166,6 @@ def settings(request):
 	
 	return render_to_response('settings/settings.html', locals(), context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
-def test(request, path):
-	
-	requestPath = request.path
-	
-	return render_to_response('test.html', locals(), context_instance=RequestContext(request))   
-
-@login_required(login_url='/login/')
-def test_root(request):
-	
-	
-	return render_to_response('test.html', locals(), context_instance=RequestContext(request))
 
 def sizeof_fmt(num):
 	for x in [' Bytes','KB','MB','GB']:
